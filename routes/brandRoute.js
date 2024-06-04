@@ -12,7 +12,7 @@ const {
 
 router.post("/createbrand", authMiddleware, isBA, createBrand);
 router.put("/:id", authMiddleware, isBA, updateBrand);
-router.delete(":id", authMiddleware, isBA, deleteBrand);
+router.delete("/:id", authMiddleware, isBA, deleteBrand);
 router.get("/allbrand", authMiddleware, getAllBrand);
 router.get("/:id", authMiddleware, getBrand);
 

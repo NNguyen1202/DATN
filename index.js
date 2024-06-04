@@ -7,6 +7,9 @@ const PORT = process.env.PORT || 4000;
 const authRouter = require("./routes/authRoute");
 const assignmentRouter = require("./routes/assignmentRoute");
 const brandRouter = require("./routes/brandRoute");
+const productRouter = require("./routes/productRoute");
+const termRouter = require("./routes/termRoute");
+const contractRouter = require("./routes/contractRoute");
 
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
@@ -22,6 +25,9 @@ app.use(cookieParser());
 app.use("/api/user", authRouter);
 app.use("/api/assignment", assignmentRouter);
 app.use("/api/brand", brandRouter);
+app.use("/api/product", productRouter);
+app.use("/api/term", termRouter);
+app.use("/api/contract", contractRouter);
 
 app.use(notFound);
 app.use(errorHandler);
