@@ -1,12 +1,15 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const app = express();
-const bodyParser = require("body-parser");
 
 const dotenv = require("dotenv").config();
-const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const PORT = process.env.PORT || 4000;
 const authRouter = require("./routes/authRoute");
+const assignmentRouter = require("./routes/assignmentRoute");
+const brandRouter = require("./routes/brandRoute");
+
+const bodyParser = require("body-parser");
+const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 dbConnect();
@@ -17,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/api/user", authRouter);
+app.use("/api/assignment", assignmentRouter);
+app.use("/api/brand", brandRouter);
 
 app.use(notFound);
 app.use(errorHandler);

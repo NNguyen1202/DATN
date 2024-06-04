@@ -119,18 +119,12 @@ const getUser = asyncHandler(async (req, res) => {
 
 //Update a user
 const updateUser = asyncHandler(async (req, res) => {
-  const { _id } = req.user;
-  validateMongoDbId(_id);
+  const { id } = req.params;
+  validateMongoDbId(id);
   try {
-    const updateUser = await User.findByIdAndUpdate(
-      _id,
-      {
-        fullName: req?.body?.fullName,
-        email: req?.body?.email,
-        phoneNumber: req?.body?.phoneNumber,
-      },
-      { new: true }
-    );
+    const updateUser = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     res.json(updateUser);
   } catch (error) {
     throw new Error(error);

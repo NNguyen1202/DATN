@@ -22,9 +22,9 @@ var userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    roleID: {
+    roleName: {
       type: String,
-      default: 1,
+      default: "BeautyBlogger",
     },
     isBlocked: {
       type: Boolean,

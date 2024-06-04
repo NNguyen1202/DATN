@@ -23,10 +23,37 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
 const isAdmin = asyncHandler(async (req, res, next) => {
   const { email } = req.user;
   const adminUser = await User.findOne({ email });
-  if (adminUser.roleID !== "0") {
-    throw new Error("Bạn không phải là 1 quản trị viên");
+  if (adminUser.roleName !== "Admin") {
+    throw new Error("Bạn không phải là 1 quản trị viên!");
   } else {
     next();
   }
 });
-module.exports = { authMiddleware, isAdmin };
+const isBA = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const BAUser = await User.findOne({ email });
+  if (BAUser.roleName !== "BrandAssistant") {
+    throw new Error("Bạn không phải là 1 trợ lý thương hiệu!");
+  } else {
+    next();
+  }
+});
+const isCA = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const CAUser = await User.findOne({ email });
+  if (CAUser.roleName !== "ContentAssistant") {
+    throw new Error("Bạn không phải là 1 trợ lý nội dung!");
+  } else {
+    next();
+  }
+});
+const isMA = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const MAUser = await User.findOne({ email });
+  if (MAUser.roleName !== "MediaAssistant") {
+    throw new Error("Bạn không phải là 1 trợ lý truyền thông!");
+  } else {
+    next();
+  }
+});
+module.exports = { authMiddleware, isAdmin, isBA, isCA, isMA };

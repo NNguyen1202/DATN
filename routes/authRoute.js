@@ -41,7 +41,7 @@ router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
 router.get("/:id", authMiddleware, isAdmin, getUser);
 
-router.put("/edit-user", authMiddleware, updateUser);
+router.put("/edit-user/:id", authMiddleware, updateUser);
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unblockUser);
 
