@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Role = require("../models/roleModel")
 const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require("../utils/validateMongodbId");
 const jwt = require("jsonwebtoken");
@@ -103,6 +104,42 @@ const getAllUser = asyncHandler(async (req, res) => {
   }
 });
 
+//Get all brand users
+const getAllBrandUser = asyncHandler(async (req, res) => {
+  try {
+    const getBrandUsers = await Role.findOne({ roleName: 'BrandAssistant' });
+    // Tìm tất cả người dùng có roleID là của "BrandAssistant"
+    const getUsers = await User.find({ roleID: getBrandUsers._id });
+    res.json(getUsers);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+//Get all content users
+const getAllContentUser = asyncHandler(async (req, res) => {
+  try {
+    const getContentUsers = await Role.findOne({ roleName: 'ContentAssistant' });
+    // Tìm tất cả người dùng có roleID là của "BrandAssistant"
+    const getUsers = await User.find({ roleID: getContentUsers._id });
+    res.json(getUsers);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+//Get all brand users
+const getAllMediaUser = asyncHandler(async (req, res) => {
+  try {
+    const getMediaUsers = await Role.findOne({ roleName: 'MediaAssistant' });
+    // Tìm tất cả người dùng có roleID là của "BrandAssistant"
+    const getUsers = await User.find({ roleID: getMediaUsers._id });
+    res.json(getUsers);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 //Get a single use
 const getUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -189,6 +226,9 @@ module.exports = {
   createUser,
   loginUserCtrl,
   getAllUser,
+  getAllBrandUser,
+  getAllContentUser,
+  getAllMediaUser,
   getUser,
   deleteUser,
   updateUser,
