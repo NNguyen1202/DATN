@@ -34,7 +34,19 @@ const {
  *             properties:
  *               videoID:
  *                 type: string
- *               scriptID:
+ *               brandID:
+ *                 type: string
+ *               productID:
+ *                 type: string
+ *               assignmentID:
+ *                 type: string
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               postUploadUrl:
  *                 type: string
  *               mediaChannel:
  *                 type: string
@@ -75,7 +87,19 @@ router.post("/createpost", authMiddleware, isMA, createPost);
  *             properties:
  *               videoID:
  *                 type: string
- *               scriptID:
+ *               brandID:
+ *                 type: string
+ *               productID:
+ *                 type: string
+ *               assignmentID:
+ *                 type: string
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *               postUploadUrl:
  *                 type: string
  *               mediaChannel:
  *                 type: string
@@ -137,7 +161,19 @@ router.delete("/:id", authMiddleware, isMA, deletePost);
  *                     type: string
  *                   videoID:
  *                     type: string
- *                   scriptID:
+ *                   brandID:
+ *                     type: string
+ *                   productID:
+ *                     type: string
+ *                   assignmentID:
+ *                     type: string
+ *                   title:
+ *                     type: string
+ *                   description:
+ *                     type: string
+ *                   content:
+ *                     type: string
+ *                   postUploadUrl:
  *                     type: string
  *                   mediaChannel:
  *                     type: string
@@ -145,6 +181,10 @@ router.delete("/:id", authMiddleware, isMA, deletePost);
  *                     type: string
  *                     format: date
  *                   status:
+ *                     type: string
+ *                   createdAt:
+ *                     type: string
+ *                   updatedAt:
  *                     type: string
  */
 router.get("/all-post", authMiddleware, getAllPost);
@@ -176,7 +216,19 @@ router.get("/all-post", authMiddleware, getAllPost);
  *                   type: string
  *                 videoID:
  *                   type: string
- *                 scriptID:
+ *                 brandID:
+ *                   type: string
+ *                 productID:
+ *                   type: string
+ *                 assignmentID:
+ *                   type: string
+ *                 title:
+ *                   type: string
+ *                 description:
+ *                   type: string
+ *                 content:
+ *                   type: string
+ *                 postUploadUrl:
  *                   type: string
  *                 mediaChannel:
  *                   type: string
@@ -184,6 +236,10 @@ router.get("/all-post", authMiddleware, getAllPost);
  *                   type: string
  *                   format: date
  *                 status:
+ *                   type: string
+ *                 createdAt:
+ *                   type: string
+ *                 updatedAt:
  *                   type: string
  */
 router.get("/:id", authMiddleware, getPost);

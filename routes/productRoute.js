@@ -50,7 +50,7 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *       400:
  *         description: Invalid input
  */
-router.post("/createproduct", authMiddleware, createProduct);
+router.post("/createproduct", authMiddleware, isAdmin, createProduct);
 
 /**
  * @swagger
@@ -90,7 +90,7 @@ router.post("/createproduct", authMiddleware, createProduct);
  *       400:
  *         description: Invalid input
  */
-router.put("/:id", authMiddleware, updateProduct);
+router.put("/:id", authMiddleware, isAdmin, updateProduct);
 
 /**
  * @swagger
@@ -113,7 +113,7 @@ router.put("/:id", authMiddleware, updateProduct);
  *       400:
  *         description: Invalid input
  */
-router.delete("/:id", authMiddleware,  deleteProduct);
+router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
 
 /**
  * @swagger
@@ -129,7 +129,20 @@ router.delete("/:id", authMiddleware,  deleteProduct);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Product'
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   brandID:
+ *                     type: string
+ *                   productName:
+ *                     type: string
+ *                   productDescription:
+ *                     type: string
+ *                   productImgUrl:
+ *                     type: array
+ *                     items:
+ *                       type: string
  */
 router.get("/allprod", authMiddleware, getAllProduct);
 
@@ -154,18 +167,18 @@ router.get("/allprod", authMiddleware, getAllProduct);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               brandID:
- *                 type: string
- *               productName:
- *                 type: string
- *               productDescription:
- *                 type: string
- *               productImgUrl:
- *                 type: array
- *                 items:
+ *               type: object
+ *               properties:
+ *                 brandID:
  *                   type: string
+ *                 productName:
+ *                   type: string
+ *                 productDescription:
+ *                   type: string
+ *                 productImgUrl:
+ *                   type: array
+ *                   items:
+ *                     type: string
  */
 router.get("/:id", authMiddleware, getProduct);
 
@@ -191,22 +204,15 @@ router.get("/:id", authMiddleware, getProduct);
  *           schema:
  *             type: object
  *             properties:
- *               brandID:
+ *               image:
  *                 type: string
- *               productName:
- *                 type: string
- *               productDescription:
- *                 type: string
- *               productImgUrl:
- *                 type: array
- *                 items:
- *                   type: string
+ *                 format: binary
  *     responses:
  *       200:
  *         description: Image uploaded successfully
  *       400:
  *         description: Invalid input
  */
-router.post('/:id/upload', authMiddleware,  upload.single('image'), uploadImage);
+router.post("/:id/upload", authMiddleware, isAdmin, upload.single('image'), uploadImage);
 
 module.exports = router;

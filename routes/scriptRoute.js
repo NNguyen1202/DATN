@@ -36,16 +36,12 @@ const {
  *                 type: string
  *               title:
  *                 type: string
- *               timeline:
- *                 type: string
- *               background:
- *                 type: string
- *               cameraAngle:
- *                 type: string
  *               content:
  *                 type: string
  *               contentImgUrl:
- *                 type: string
+ *                 type: array
+ *                 items:
+ *                   type: string
  *               version:
  *                 type: string
  *               status:
@@ -84,16 +80,12 @@ router.post("/createscript", authMiddleware, isCA, createScript);
  *                 type: string
  *               title:
  *                 type: string
- *               timeline:
- *                 type: string
- *               background:
- *                 type: string
- *               cameraAngle:
- *                 type: string
  *               content:
  *                 type: string
  *               contentImgUrl:
- *                 type: string
+ *                 type: array
+ *                 items:
+ *                   type: string
  *               version:
  *                 type: string
  *               status:
@@ -153,16 +145,12 @@ router.delete("/:id", authMiddleware, isCA, deleteScript);
  *                     type: string
  *                   title:
  *                     type: string
- *                   timeline:
- *                     type: string
- *                   background:
- *                     type: string
- *                   cameraAngle:
- *                     type: string
  *                   content:
  *                     type: string
  *                   contentImgUrl:
- *                     type: string
+ *                     type: array
+ *                     items:
+ *                       type: string
  *                   version:
  *                     type: string
  *                   status:
@@ -199,16 +187,12 @@ router.get("/all-script", authMiddleware, getAllScript);
  *                   type: string
  *                 title:
  *                   type: string
- *                 timeline:
- *                   type: string
- *                 background:
- *                   type: string
- *                 cameraAngle:
- *                   type: string
  *                 content:
  *                   type: string
  *                 contentImgUrl:
- *                   type: string
+ *                   type: array
+ *                   items:
+ *                     type: string
  *                 version:
  *                   type: string
  *                 status:

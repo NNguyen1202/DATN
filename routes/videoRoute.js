@@ -19,7 +19,7 @@ const {
 
 /**
  * @swagger
- * /api/video/createvideo:
+ * /api/video:
  *   post:
  *     summary: Create a new video
  *     tags: [Video]
@@ -35,6 +35,10 @@ const {
  *               assignmentID:
  *                 type: string
  *               contractID:
+ *                 type: string
+ *               taskID:
+ *                 type: string
+ *               scriptID:
  *                 type: string
  *               title:
  *                 type: string
@@ -54,7 +58,7 @@ const {
  *       400:
  *         description: Invalid input
  */
-router.post("/createvideo", authMiddleware, isMA, createVideo);
+router.post("/", authMiddleware, isMA, createVideo);
 
 /**
  * @swagger
@@ -81,6 +85,10 @@ router.post("/createvideo", authMiddleware, isMA, createVideo);
  *               assignmentID:
  *                 type: string
  *               contractID:
+ *                 type: string
+ *               taskID:
+ *                 type: string
+ *               scriptID:
  *                 type: string
  *               title:
  *                 type: string
@@ -127,7 +135,7 @@ router.delete("/:id", authMiddleware, isMA, deleteVideo);
 
 /**
  * @swagger
- * /api/video/all-video:
+ * /api/video:
  *   get:
  *     summary: Get all videos
  *     tags: [Video]
@@ -149,6 +157,10 @@ router.delete("/:id", authMiddleware, isMA, deleteVideo);
  *                     type: string
  *                   contractID:
  *                     type: string
+ *                   taskID:
+ *                     type: string
+ *                   scriptID:
+ *                     type: string
  *                   title:
  *                     type: string
  *                   draftVersionUrl:
@@ -162,7 +174,7 @@ router.delete("/:id", authMiddleware, isMA, deleteVideo);
  *                   status:
  *                     type: string
  */
-router.get("/all-video", authMiddleware, getAllVideo);
+router.get("/", authMiddleware, getAllVideo);
 
 /**
  * @swagger
@@ -192,6 +204,10 @@ router.get("/all-video", authMiddleware, getAllVideo);
  *                 assignmentID:
  *                   type: string
  *                 contractID:
+ *                   type: string
+ *                 taskID:
+ *                   type: string
+ *                 scriptID:
  *                   type: string
  *                 title:
  *                   type: string

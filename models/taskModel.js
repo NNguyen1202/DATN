@@ -20,6 +20,18 @@ var taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    timeline: {
+      type: String,
+      required: true,
+    },
+    background: {
+      type: String,
+      required: true,
+    },
+    cameraAngle: {
+      type: String,
+      required: true,
+    },
     equipment: {
       type: String,
       required: true,

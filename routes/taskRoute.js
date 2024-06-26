@@ -40,6 +40,12 @@ const {
  *                 type: string
  *               location:
  *                 type: string
+ *               timeline:
+ *                 type: string
+ *               background:
+ *                 type: string
+ *               cameraAngle:
+ *                 type: string
  *               equipment:
  *                 type: string
  *               wardrobe:
@@ -85,6 +91,12 @@ router.post("/createtask", authMiddleware, isCA, createTask);
  *               description:
  *                 type: string
  *               location:
+ *                 type: string
+ *               timeline:
+ *                 type: string
+ *               background:
+ *                 type: string
+ *               cameraAngle:
  *                 type: string
  *               equipment:
  *                 type: string
@@ -153,6 +165,12 @@ router.delete("/:id", authMiddleware, isCA, deleteTask);
  *                     type: string
  *                   location:
  *                     type: string
+ *                   timeline:
+ *                     type: string
+ *                   background:
+ *                     type: string
+ *                   cameraAngle:
+ *                     type: string
  *                   equipment:
  *                     type: string
  *                   wardrobe:
@@ -196,6 +214,12 @@ router.get("/all-task", authMiddleware, getAllTask);
  *                 description:
  *                   type: string
  *                 location:
+ *                   type: string
+ *                 timeline:
+ *                   type: string
+ *                 background:
+ *                   type: string
+ *                 cameraAngle:
  *                   type: string
  *                 equipment:
  *                   type: string

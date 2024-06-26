@@ -37,6 +37,8 @@ const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
  *                 type: string
  *               userID:
  *                 type: string
+ *               termID:
+ *                 type: string
  *               title:
  *                 type: string
  *               minViews:
@@ -95,6 +97,8 @@ router.post("/createcontract", authMiddleware, createContract);
  *               brandID:
  *                 type: string
  *               userID:
+ *                 type: string
+ *               termID:
  *                 type: string
  *               title:
  *                 type: string
@@ -170,35 +174,37 @@ router.delete("/:id", authMiddleware, deleteContract);
  *               items:
  *                 type: object
  *                 properties:
- *               brandID:
- *                 type: string
- *               userID:
- *                 type: string
- *               title:
- *                 type: string
- *               minViews:
- *                 type: number
- *               minLikes:
- *                 type: number
- *               minShares:
- *                 type: number
- *               minComments:
- *                 type: number
- *               urlUpload:
- *                 type: array
- *                 items:
- *                   type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate1:
- *                 type: string
- *                 format: date
- *               endDate2:
- *                 type: string
- *                 format: date
- *               status:
- *                 type: string
+ *                   brandID:
+ *                     type: string
+ *                   userID:
+ *                     type: string
+ *                   termID:
+ *                     type: string
+ *                   title:
+ *                     type: string
+ *                   minViews:
+ *                     type: number
+ *                   minLikes:
+ *                     type: number
+ *                   minShares:
+ *                     type: number
+ *                   minComments:
+ *                     type: number
+ *                   urlUpload:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   startDate:
+ *                     type: string
+ *                     format: date
+ *                   endDate1:
+ *                     type: string
+ *                     format: date
+ *                   endDate2:
+ *                     type: string
+ *                     format: date
+ *                   status:
+ *                     type: string
  */
 router.get("/allcontracts", authMiddleware, getAllContract);
 
@@ -225,35 +231,37 @@ router.get("/allcontracts", authMiddleware, getAllContract);
  *             schema:
  *               type: object
  *               properties:
- *               brandID:
- *                 type: string
- *               userID:
- *                 type: string
- *               title:
- *                 type: string
- *               minViews:
- *                 type: number
- *               minLikes:
- *                 type: number
- *               minShares:
- *                 type: number
- *               minComments:
- *                 type: number
- *               urlUpload:
- *                 type: array
- *                 items:
+ *                 brandID:
  *                   type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate1:
- *                 type: string
- *                 format: date
- *               endDate2:
- *                 type: string
- *                 format: date
- *               status:
- *                 type: string
+ *                 userID:
+ *                   type: string
+ *                 termID:
+ *                   type: string
+ *                 title:
+ *                   type: string
+ *                 minViews:
+ *                   type: number
+ *                 minLikes:
+ *                   type: number
+ *                 minShares:
+ *                   type: number
+ *                 minComments:
+ *                   type: number
+ *                 urlUpload:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                 startDate:
+ *                   type: string
+ *                   format: date
+ *                 endDate1:
+ *                   type: string
+ *                   format: date
+ *                 endDate2:
+ *                   type: string
+ *                   format: date
+ *                 status:
+ *                   type: string
  */
 router.get("/:id", authMiddleware, getContract);
 
@@ -279,35 +287,9 @@ router.get("/:id", authMiddleware, getContract);
  *           schema:
  *             type: object
  *             properties:
- *               brandID:
+ *               pdf:
  *                 type: string
- *               userID:
- *                 type: string
- *               title:
- *                 type: string
- *               minViews:
- *                 type: number
- *               minLikes:
- *                 type: number
- *               minShares:
- *                 type: number
- *               minComments:
- *                 type: number
- *               urlUpload:
- *                 type: array
- *                 items:
- *                   type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate1:
- *                 type: string
- *                 format: date
- *               endDate2:
- *                 type: string
- *                 format: date
- *               status:
- *                 type: string
+ *                 format: binary
  *     responses:
  *       200:
  *         description: File uploaded successfully

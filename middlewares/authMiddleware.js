@@ -57,4 +57,40 @@ const isMA = asyncHandler(async (req, res, next) => {
     next();
   }
 });
-module.exports = { authMiddleware, isAdmin, isBA, isCA, isMA };
+const isBB = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const adminUser = await User.findOne({ email });
+  if (!adminUser.roleID.equals("666199ccd75d4bd81c4aa3ee")) {
+    throw new Error("Bạn không phải là 1 trợ lý thương hiệu!");
+  } else {
+    next();
+  }
+});
+const isCC = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const adminUser = await User.findOne({ email });
+  if (!adminUser.roleID.equals("666199d4d75d4bd81c4aa3f1")) {
+    throw new Error("Bạn không phải là 1 trợ lý nội dung!");
+  } else {
+    next();
+  }
+});
+const isMM = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const adminUser = await User.findOne({ email });
+  if (!adminUser.roleID.equals("666199dbd75d4bd81c4aa3f4")) {
+    throw new Error("Bạn không phải là 1 trợ lý truyền thông!");
+  } else {
+    next();
+  }
+});
+module.exports = {
+  authMiddleware,
+  isAdmin,
+  isBA,
+  isCA,
+  isMA,
+  isBB,
+  isCC,
+  isMM,
+};

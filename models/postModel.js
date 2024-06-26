@@ -8,9 +8,33 @@ var postSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Video",
     },
-    scriptID: {
+    brandID: {
       type: mongoose.Schema.ObjectId,
-      ref: "Script",
+      ref: "Brand",
+    },
+    productID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Product",
+    },
+    assignmentID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Assignment",
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    postUploadUrl: {
+      type: String,
+      required: true,
     },
     mediaChannel: {
       type: String,

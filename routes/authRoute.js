@@ -248,7 +248,7 @@ router.get("/logout", logout);
  *       401:
  *         description: Unauthorized
  */
-router.get("/:id", authMiddleware, isAdmin, getUser);
+router.get("/:id", authMiddleware, getUser);
 
 /**
  * @swagger

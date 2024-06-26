@@ -12,10 +12,19 @@ var videoSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Contract",
     },
+    taskID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Task",
+    },
+    scriptID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Script",
+    },
     title: {
       type: String,
       required: true,
     },
+    thumbnailUrl: [],
     draftVersionUrl: [],
     finalVersionUrl: [],
     status: {
@@ -28,19 +37,27 @@ var videoSchema = new mongoose.Schema(
     toJSON: {
       virtuals: true,
       transform: (doc, ret) => {
-        ret.createdAt = moment(ret.createdAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
-        ret.updatedAt = moment(ret.updatedAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+        ret.createdAt = moment(ret.createdAt)
+          .tz("Asia/Ho_Chi_Minh")
+          .format("DD/MM/YYYY HH:mm:ss");
+        ret.updatedAt = moment(ret.updatedAt)
+          .tz("Asia/Ho_Chi_Minh")
+          .format("DD/MM/YYYY HH:mm:ss");
         return ret;
-      }
+      },
     },
     toObject: {
       virtuals: true,
       transform: (doc, ret) => {
-        ret.createdAt = moment(ret.createdAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
-        ret.updatedAt = moment(ret.updatedAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+        ret.createdAt = moment(ret.createdAt)
+          .tz("Asia/Ho_Chi_Minh")
+          .format("DD/MM/YYYY HH:mm:ss");
+        ret.updatedAt = moment(ret.updatedAt)
+          .tz("Asia/Ho_Chi_Minh")
+          .format("DD/MM/YYYY HH:mm:ss");
         return ret;
-      }
-    }
+      },
+    },
   }
 );
 

@@ -1,5 +1,4 @@
-const { Int32 } = require("mongodb");
-const mongoose = require("mongoose"); // Erase if already required
+const mongoose = require("mongoose");
 const moment = require("moment-timezone");
 
 // Declare the Schema of the Mongo model
@@ -40,14 +39,20 @@ var contractSchema = new mongoose.Schema({
   startDate: {
     type: Date,
     required: true,
+    get: (v) => moment(v).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss'),
+    set: (v) => moment(v, 'DD/MM/YYYY HH:mm:ss').tz('Asia/Ho_Chi_Minh').toDate()
   },
   endDate1: {
     type: Date,
     required: true,
+    get: (v) => moment(v).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss'),
+    set: (v) => moment(v, 'DD/MM/YYYY HH:mm:ss').tz('Asia/Ho_Chi_Minh').toDate()
   },
   endDate2: {
     type: Date,
     required: true,
+    get: (v) => moment(v).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss'),
+    set: (v) => moment(v, 'DD/MM/YYYY HH:mm:ss').tz('Asia/Ho_Chi_Minh').toDate()
   },
   status: {
     type: String,
@@ -61,6 +66,9 @@ var contractSchema = new mongoose.Schema({
     transform: (doc, ret) => {
       ret.createdAt = moment(ret.createdAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
       ret.updatedAt = moment(ret.updatedAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.startDate = moment(ret.startDate).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.endDate1 = moment(ret.endDate1).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.endDate2 = moment(ret.endDate2).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
       return ret;
     }
   },
@@ -69,6 +77,9 @@ var contractSchema = new mongoose.Schema({
     transform: (doc, ret) => {
       ret.createdAt = moment(ret.createdAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
       ret.updatedAt = moment(ret.updatedAt).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.startDate = moment(ret.startDate).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.endDate1 = moment(ret.endDate1).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
+      ret.endDate2 = moment(ret.endDate2).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss');
       return ret;
     }
   }

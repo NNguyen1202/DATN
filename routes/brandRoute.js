@@ -40,6 +40,8 @@ const {
  *                 type: string
  *               contractID:
  *                 type: string
+ *               brandImgUrl:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Brand created successfully
@@ -77,6 +79,8 @@ router.post("/createbrand", authMiddleware, isBA, createBrand);
  *               brandDescription:
  *                 type: string
  *               contractID:
+ *                 type: string
+ *               brandImgUrl:
  *                 type: string
  *     responses:
  *       200:
@@ -135,6 +139,8 @@ router.delete("/:id", authMiddleware, isBA, deleteBrand);
  *                     type: string
  *                   contractID:
  *                     type: string
+ *                   brandImgUrl:
+ *                     type: string
  */
 router.get("/allbrand", authMiddleware, getAllBrand);
 
@@ -168,6 +174,8 @@ router.get("/allbrand", authMiddleware, getAllBrand);
  *                 brandDescription:
  *                   type: string
  *                 contractID:
+ *                   type: string
+ *                 brandImgUrl:
  *                   type: string
  */
 router.get("/:id", authMiddleware, getBrand);

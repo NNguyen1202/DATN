@@ -20,6 +20,7 @@ const postRouter = require("./routes/postRoute");
 const statisticRouter = require("./routes/statisticRoute");
 const postInfoRouter = require("./routes/postInfoRoute");
 const responseRouter = require("./routes/responseRoute");
+const facebookWHRouter = require("./routes/facebookWHRoute");
 
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
@@ -33,7 +34,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Route cho Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {explorer: true}));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, { explorer: true })
+);
 app.use("/api/user", authRouter);
 app.use("/api/assignment", assignmentRouter);
 app.use("/api/brand", brandRouter);
@@ -48,6 +53,7 @@ app.use("/api/post", postRouter);
 app.use("/api/statistic", statisticRouter);
 app.use("/api/postInfo", postInfoRouter);
 app.use("/api/response", responseRouter);
+app.use("/webhook", facebookWHRouter);
 
 app.use(notFound);
 app.use(errorHandler);
