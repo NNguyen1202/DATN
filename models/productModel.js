@@ -7,6 +7,10 @@ var prodSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "Brand",
   },
+  prodCategoryID:{
+    type: mongoose.Schema.ObjectId,
+    ref: "ProdCategory"
+  },
   productName: {
     type: String,
     required: true,

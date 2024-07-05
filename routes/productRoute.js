@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
+const { authMiddleware, isBA } = require("../middlewares/authMiddleware");
 
 const {
   createProduct,
@@ -36,6 +36,8 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *             properties:
  *               brandID:
  *                 type: string
+ *               prodCategoryID:
+ *                 type: string
  *               productName:
  *                 type: string
  *               productDescription:
@@ -50,7 +52,7 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *       400:
  *         description: Invalid input
  */
-router.post("/createproduct", authMiddleware, isAdmin, createProduct);
+router.post("/createproduct", authMiddleware, isBA, createProduct);
 
 /**
  * @swagger
@@ -76,6 +78,8 @@ router.post("/createproduct", authMiddleware, isAdmin, createProduct);
  *             properties:
  *               brandID:
  *                 type: string
+ *               prodCategoryID:
+ *                 type: string
  *               productName:
  *                 type: string
  *               productDescription:
@@ -90,7 +94,7 @@ router.post("/createproduct", authMiddleware, isAdmin, createProduct);
  *       400:
  *         description: Invalid input
  */
-router.put("/:id", authMiddleware, isAdmin, updateProduct);
+router.put("/:id", authMiddleware, isBA, updateProduct);
 
 /**
  * @swagger
@@ -113,7 +117,7 @@ router.put("/:id", authMiddleware, isAdmin, updateProduct);
  *       400:
  *         description: Invalid input
  */
-router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
+router.delete("/:id", authMiddleware, isBA, deleteProduct);
 
 /**
  * @swagger
@@ -134,6 +138,8 @@ router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
  *                 type: object
  *                 properties:
  *                   brandID:
+ *                     type: string
+ *                   prodCategoryID:
  *                     type: string
  *                   productName:
  *                     type: string
@@ -170,6 +176,8 @@ router.get("/allprod", authMiddleware, getAllProduct);
  *               type: object
  *               properties:
  *                 brandID:
+ *                   type: string
+ *                 prodCategoryID:
  *                   type: string
  *                 productName:
  *                   type: string
@@ -213,6 +221,6 @@ router.get("/:id", authMiddleware, getProduct);
  *       400:
  *         description: Invalid input
  */
-router.post("/:id/upload", authMiddleware, isAdmin, upload.single('image'), uploadImage);
+router.post("/:id/upload", authMiddleware, isBA, upload.single('image'), uploadImage);
 
 module.exports = router;
