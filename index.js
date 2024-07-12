@@ -27,6 +27,7 @@ const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
+const sendNotification = require('./service/notificationService'); // Import sendNotification
 dbConnect();
 
 app.use(morgan("dev"));
@@ -59,6 +60,9 @@ app.use("/webhook", facebookWHRouter);
 
 app.use(notFound);
 app.use(errorHandler);
+
+// Khởi chạy sendNotification khi server bắt đầu chạy
+sendNotification();
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
