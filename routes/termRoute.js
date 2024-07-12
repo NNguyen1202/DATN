@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
+const { authMiddleware } = require("../middlewares/authMiddleware");
 
 const {
   createTerm,
@@ -19,6 +19,38 @@ const {
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Term:
+ *       type: object
+ *       properties:
+ *         contractID:
+ *           type: string
+ *           description: The ID of the contract associated with the term
+ *         description:
+ *           type: string
+ *           description: Description of the term
+ *         payment:
+ *           type: string
+ *           description: Payment details of the term
+ *         paymentMethods:
+ *           type: string
+ *           description: Payment methods for the term
+ *         paymentTermID:
+ *           type: string
+ *           description: The ID of the payment term associated with the term
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The creation timestamp
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The last update timestamp
+ */
+
+/**
+ * @swagger
  * /api/term/createterm:
  *   post:
  *     summary: Create a new term
@@ -30,14 +62,7 @@ const {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               contractID:
- *                 type: string
- *               contractName:
- *                 type: string
- *               description:
- *                 type: string
+ *             $ref: '#/components/schemas/Term'
  *     responses:
  *       201:
  *         description: Term created successfully
@@ -50,7 +75,7 @@ router.post("/createterm", authMiddleware, createTerm);
  * @swagger
  * /api/term/{id}:
  *   put:
- *     summary: Update a term
+ *     summary: Update a term by ID
  *     tags: [Term]
  *     security:
  *       - bearerAuth: []
@@ -60,20 +85,13 @@ router.post("/createterm", authMiddleware, createTerm);
  *         schema:
  *           type: string
  *         required: true
- *         description: The term ID
+ *         description: The ID of the term to update
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               contractID:
- *                 type: string
- *               contractName:
- *                 type: string
- *               description:
- *                 type: string
+ *             $ref: '#/components/schemas/Term'
  *     responses:
  *       200:
  *         description: Term updated successfully
@@ -86,7 +104,7 @@ router.put("/:id", authMiddleware, updateTerm);
  * @swagger
  * /api/term/{id}:
  *   delete:
- *     summary: Delete a term
+ *     summary: Delete a term by ID
  *     tags: [Term]
  *     security:
  *       - bearerAuth: []
@@ -96,7 +114,7 @@ router.put("/:id", authMiddleware, updateTerm);
  *         schema:
  *           type: string
  *         required: true
- *         description: The term ID
+ *         description: The ID of the term to delete
  *     responses:
  *       200:
  *         description: Term deleted successfully
@@ -121,16 +139,7 @@ router.delete("/:id", authMiddleware, deleteTerm);
  *             schema:
  *               type: array
  *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                   contractID:
- *                     type: string
- *                   contractName:
- *                     type: string
- *                   description:
- *                     type: string
+ *                 $ref: '#/components/schemas/Term'
  */
 router.get("/allterm", authMiddleware, getAllTerm);
 
@@ -148,23 +157,14 @@ router.get("/allterm", authMiddleware, getAllTerm);
  *         schema:
  *           type: string
  *         required: true
- *         description: The term ID
+ *         description: The ID of the term to retrieve
  *     responses:
  *       200:
  *         description: Term details
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                   id:
- *                     type: string
- *                   contractID:
- *                     type: string
- *                   contractName:
- *                     type: string
- *                   description:
- *                     type: string
+ *               $ref: '#/components/schemas/Term'
  */
 router.get("/:id", authMiddleware, getTerm);
 

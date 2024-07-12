@@ -42,6 +42,11 @@ const {
  *                 type: string
  *               title:
  *                 type: string
+ *                 required: true
+ *               thumbnailUrl:
+ *                 type: array
+ *                 items:
+ *                   type: string
  *               draftVersionUrl:
  *                 type: array
  *                 items:
@@ -52,6 +57,7 @@ const {
  *                   type: string
  *               status:
  *                 type: string
+ *                 required: true
  *     responses:
  *       201:
  *         description: Video created successfully
@@ -92,6 +98,11 @@ router.post("/", authMiddleware, isMA, createVideo);
  *                 type: string
  *               title:
  *                 type: string
+ *                 required: true
+ *               thumbnailUrl:
+ *                 type: array
+ *                 items:
+ *                   type: string
  *               draftVersionUrl:
  *                 type: array
  *                 items:
@@ -102,6 +113,7 @@ router.post("/", authMiddleware, isMA, createVideo);
  *                   type: string
  *               status:
  *                 type: string
+ *                 required: true
  *     responses:
  *       200:
  *         description: Video updated successfully
@@ -163,6 +175,10 @@ router.delete("/:id", authMiddleware, isMA, deleteVideo);
  *                     type: string
  *                   title:
  *                     type: string
+ *                   thumbnailUrl:
+ *                     type: array
+ *                     items:
+ *                       type: string
  *                   draftVersionUrl:
  *                     type: array
  *                     items:
@@ -172,6 +188,10 @@ router.delete("/:id", authMiddleware, isMA, deleteVideo);
  *                     items:
  *                       type: string
  *                   status:
+ *                     type: string
+ *                   createdAt:
+ *                     type: string
+ *                   updatedAt:
  *                     type: string
  */
 router.get("/", authMiddleware, getAllVideo);
@@ -211,6 +231,10 @@ router.get("/", authMiddleware, getAllVideo);
  *                   type: string
  *                 title:
  *                   type: string
+ *                 thumbnailUrl:
+ *                   type: array
+ *                   items:
+ *                     type: string
  *                 draftVersionUrl:
  *                   type: array
  *                   items:
@@ -220,6 +244,10 @@ router.get("/", authMiddleware, getAllVideo);
  *                   items:
  *                     type: string
  *                 status:
+ *                   type: string
+ *                 createdAt:
+ *                   type: string
+ *                 updatedAt:
  *                   type: string
  */
 router.get("/:id", authMiddleware, getVideo);

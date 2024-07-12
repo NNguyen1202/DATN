@@ -21,6 +21,58 @@ const upload = require("../middlewares/uploadPdfMiddleware");
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       properties:
+ *         contractID:
+ *           type: string
+ *           description: The ID of the contract associated with the product
+ *         prodCategoryID:
+ *           type: string
+ *           description: The ID of the product category
+ *         productName:
+ *           type: string
+ *           required: true
+ *           description: The name of the product
+ *         productDescription:
+ *           type: string
+ *           required: true
+ *           description: Description of the product
+ *         productImgUrl:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: URLs of product images
+ *         productDetail:
+ *           type: string
+ *           required: true
+ *           description: Detailed information about the product
+ *         productIngredient:
+ *           type: string
+ *           required: true
+ *           description: Ingredients used in the product
+ *         productUses:
+ *           type: string
+ *           required: true
+ *           description: Uses or applications of the product
+ *         productUsage:
+ *           type: string
+ *           required: true
+ *           description: Instructions for using the product
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The creation timestamp
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The last update timestamp
+ */
+
+/**
+ * @swagger
  * /api/product/createproduct:
  *   post:
  *     summary: Create a new product
@@ -32,20 +84,7 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               brandID:
- *                 type: string
- *               prodCategoryID:
- *                 type: string
- *               productName:
- *                 type: string
- *               productDescription:
- *                 type: string
- *               productImgUrl:
- *                 type: array
- *                 items:
- *                   type: string
+ *             $ref: '#/components/schemas/Product'
  *     responses:
  *       201:
  *         description: Product created successfully
@@ -74,20 +113,7 @@ router.post("/createproduct", authMiddleware, isBA, createProduct);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               brandID:
- *                 type: string
- *               prodCategoryID:
- *                 type: string
- *               productName:
- *                 type: string
- *               productDescription:
- *                 type: string
- *               productImgUrl:
- *                 type: array
- *                 items:
- *                   type: string
+ *             $ref: '#/components/schemas/Product'
  *     responses:
  *       200:
  *         description: Product updated successfully
@@ -135,20 +161,7 @@ router.delete("/:id", authMiddleware, isBA, deleteProduct);
  *             schema:
  *               type: array
  *               items:
- *                 type: object
- *                 properties:
- *                   brandID:
- *                     type: string
- *                   prodCategoryID:
- *                     type: string
- *                   productName:
- *                     type: string
- *                   productDescription:
- *                     type: string
- *                   productImgUrl:
- *                     type: array
- *                     items:
- *                       type: string
+ *                 $ref: '#/components/schemas/Product'
  */
 router.get("/allprod", authMiddleware, getAllProduct);
 
@@ -173,20 +186,7 @@ router.get("/allprod", authMiddleware, getAllProduct);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 brandID:
- *                   type: string
- *                 prodCategoryID:
- *                   type: string
- *                 productName:
- *                   type: string
- *                 productDescription:
- *                   type: string
- *                 productImgUrl:
- *                   type: array
- *                   items:
- *                     type: string
+ *               $ref: '#/components/schemas/Product'
  */
 router.get("/:id", authMiddleware, getProduct);
 
@@ -221,6 +221,6 @@ router.get("/:id", authMiddleware, getProduct);
  *       400:
  *         description: Invalid input
  */
-router.post("/:id/upload", authMiddleware, isBA, upload.single('image'), uploadImage);
+router.post("/:id/upload", authMiddleware, isBA, uploadImage);
 
 module.exports = router;

@@ -7,13 +7,21 @@ var termSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "Contract",
   },
-  contractName: {
-    type: String,
-    required: true,
-  },
   description: {
     type: String,
     required: true,
+  },
+  payment: {
+    type: String,
+    required: true,
+  },
+  paymentMethods: {
+    type: String,
+    required: true,
+  },
+  paymentTermID: {
+    type: mongoose.Schema.ObjectId,
+    ref: "PaymentTerm",
   },
 },
 {

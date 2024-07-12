@@ -30,6 +30,15 @@ const isAdmin = asyncHandler(async (req, res, next) => {
     next();
   }
 });
+const isBrand = asyncHandler(async (req, res, next) => {
+  const { email } = req.user;
+  const brandUser = await User.findOne({ email });
+  if (!brandUser.roleID.equals("668817f967bc1a52f018759f")) {
+    throw new Error("Bạn không phải là 1 đại diện thương hiệu!");
+  } else {
+    next();
+  }
+});
 const isBA = asyncHandler(async (req, res, next) => {
   const { email } = req.user;
   const BAUser = await User.findOne({ email });

@@ -3,9 +3,9 @@ const moment = require("moment-timezone");
 
 // Declare the Schema of the Mongo model
 var prodSchema = new mongoose.Schema({
-  brandID: {
+  contractID: {
     type: mongoose.Schema.ObjectId,
-    ref: "Brand",
+    ref: "Contract",
   },
   prodCategoryID:{
     type: mongoose.Schema.ObjectId,
@@ -19,7 +19,23 @@ var prodSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  productImgUrl:[]
+  productImgUrl:[],
+productDetail: {
+  type: String,
+  required: true,
+},
+productIngredient: {
+  type: String,
+  required: true,
+},
+productUses: {
+  type: String,
+  required: true,
+},
+productUsage: {
+  type: String,
+  required: true,
+},
 },
 {
   timestamps: true,

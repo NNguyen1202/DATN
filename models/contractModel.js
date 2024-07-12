@@ -19,6 +19,10 @@ var contractSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  service:{
+    type: String,
+    required: true,
+  },
   minViews: {
     type: Number,
     required: true,
