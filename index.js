@@ -2,7 +2,7 @@ const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const cron = require('node-cron');
 const { swaggerUi, swaggerSpec } = require("./config/swaggerConfig");
-const { refreshToken } = require('./services/tokenService');
+const { refreshToken, updateTokenRefreshCounter, getTokenRefreshCounter  } = require('./services/tokenService');
 const sendNotification = require('./services/notificationService');
 
 const app = express();
@@ -13,6 +13,7 @@ const authRouter = require("./routes/authRoute");
 const assignmentRouter = require("./routes/assignmentRoute");
 const brandRouter = require("./routes/brandRoute");
 const prodCategoryRouter = require("./routes/prodCategoryRoute");
+const prodDetailRouter = require("./routes/productDetailRoute");
 const productRouter = require("./routes/productRoute");
 const termRouter = require("./routes/termRoute");
 const contractRouter = require("./routes/contractRoute");
@@ -52,6 +53,7 @@ app.use("/api/assignment", assignmentRouter);
 app.use("/api/brand", brandRouter);
 app.use("/api/product", productRouter);
 app.use("/api/prodCategory", prodCategoryRouter);
+app.use("/api/productDetail", prodDetailRouter);
 app.use("/api/term", termRouter);
 app.use("/api/contract", contractRouter);
 app.use("/api/role", roleRouter);
@@ -70,13 +72,8 @@ app.use("/webhook", facebookWHRouter);
 app.use(notFound);
 app.use(errorHandler);
 
-
-  refreshToken();
-
-
-
-  sendNotification();
-
+refreshToken();
+sendNotification();
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -32,6 +32,9 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *         prodCategoryID:
  *           type: string
  *           description: The ID of the product category
+ *         prodDetailID:
+ *           type: string
+ *           description: The ID of the product detail
  *         productName:
  *           type: string
  *           required: true
@@ -45,10 +48,6 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *           items:
  *             type: string
  *           description: URLs of product images
- *         productDetail:
- *           type: string
- *           required: true
- *           description: Detailed information about the product
  *         productIngredient:
  *           type: string
  *           required: true
@@ -221,6 +220,6 @@ router.get("/:id", authMiddleware, getProduct);
  *       400:
  *         description: Invalid input
  */
-router.post("/:id/upload", authMiddleware, isBA, uploadImage);
+router.post("/:id/upload", authMiddleware, isBA, upload.single('image'), uploadImage);
 
 module.exports = router;

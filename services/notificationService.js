@@ -99,9 +99,6 @@ const sendNotification = async () => {
   }
 };
 
-cron.schedule("0,30 * * * *", () => {
-  console.log('Running scheduled task to check for new notifications');
-  sendNotification();
-});
+
 
 module.exports = sendNotification;

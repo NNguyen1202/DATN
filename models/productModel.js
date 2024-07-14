@@ -9,7 +9,11 @@ var prodSchema = new mongoose.Schema({
   },
   prodCategoryID:{
     type: mongoose.Schema.ObjectId,
-    ref: "ProdCategory"
+    ref: "ProdCategory",
+  },
+  prodDetailID:{
+    type: mongoose.Schema.ObjectId,
+    ref: "ProdDetail",
   },
   productName: {
     type: String,
