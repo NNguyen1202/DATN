@@ -7,10 +7,6 @@ var minestoneSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"PaymentTerm",
     },
-    views:{
-        type:String,
-        required:true,
-    },
     likes:{
         type:String,
         required:true,

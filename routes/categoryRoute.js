@@ -13,16 +13,16 @@ const {
 /**
  * @swagger
  * tags:
- *   name: ProdCategory
- *   description: ProdCategory management
+ *   name: Category
+ *   description: Category management
  */
 
 /**
  * @swagger
- * /api/prodcategory/createprodcategory:
+ * /api/category/createcategory:
  *   post:
- *     summary: Create a new prodcategory
- *     tags: [ProdCategory]
+ *     summary: Create a new category
+ *     tags: [Category]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -38,18 +38,18 @@ const {
  *                 type: string
  *     responses:
  *       201:
- *         description: ProdCategory created successfully
+ *         description: Category created successfully
  *       400:
  *         description: Invalid input
  */
-router.post("/createprodcategory", authMiddleware, isBA, createProdCategory);
+router.post("/createcategory", authMiddleware, isBA, createProdCategory);
 
 /**
  * @swagger
- * /api/prodcategory/{id}:
+ * /api/category/{id}:
  *   put:
- *     summary: Update a prodcategory
- *     tags: [ProdCategory]
+ *     summary: Update a category
+ *     tags: [Category]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -58,7 +58,7 @@ router.post("/createprodcategory", authMiddleware, isBA, createProdCategory);
  *         schema:
  *           type: string
  *         required: true
- *         description: The prodcategory ID
+ *         description: The category ID
  *     requestBody:
  *       required: true
  *       content:
@@ -72,7 +72,7 @@ router.post("/createprodcategory", authMiddleware, isBA, createProdCategory);
  *                 type: string
  *     responses:
  *       200:
- *         description: ProdCategory updated successfully
+ *         description: Category updated successfully
  *       400:
  *         description: Invalid input
  */
@@ -80,10 +80,10 @@ router.put("/:id", authMiddleware, isBA, updateProdCategory);
 
 /**
  * @swagger
- * /api/prodcategory/{id}:
+ * /api/category/{id}:
  *   delete:
- *     summary: Delete a prodcategory
- *     tags: [ProdCategory]
+ *     summary: Delete a category
+ *     tags: [Category]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -92,10 +92,10 @@ router.put("/:id", authMiddleware, isBA, updateProdCategory);
  *         schema:
  *           type: string
  *         required: true
- *         description: The prodcategory ID
+ *         description: The category ID
  *     responses:
  *       200:
- *         description: ProdCategory deleted successfully
+ *         description: Category deleted successfully
  *       400:
  *         description: Invalid input
  */
@@ -103,15 +103,15 @@ router.delete("/:id", authMiddleware, isBA, deleteProdCategory);
 
 /**
  * @swagger
- * /api/prodcategory/allprodcategory:
+ * /api/category/allcategory:
  *   get:
- *     summary: Get all prodcategories
- *     tags: [ProdCategory]
+ *     summary: Get all categories
+ *     tags: [Category]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: List of prodcategories
+ *         description: List of categories
  *         content:
  *           application/json:
  *             schema:
@@ -124,14 +124,14 @@ router.delete("/:id", authMiddleware, isBA, deleteProdCategory);
  *                   categoryDescription:
  *                     type: string
  */
-router.get("/allprodcategory", authMiddleware, getAllProdCategory);
+router.get("/allcategory", authMiddleware, getAllProdCategory);
 
 /**
  * @swagger
- * /api/prodcategory/{id}:
+ * /api/category/{id}:
  *   get:
- *     summary: Get a prodcategory by ID
- *     tags: [ProdCategory]
+ *     summary: Get a category by ID
+ *     tags: [Category]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -140,10 +140,10 @@ router.get("/allprodcategory", authMiddleware, getAllProdCategory);
  *         schema:
  *           type: string
  *         required: true
- *         description: The prodcategory ID
+ *         description: The category ID
  *     responses:
  *       200:
- *         description: ProdCategory details
+ *         description: Category details
  *         content:
  *           application/json:
  *             schema:

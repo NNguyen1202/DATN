@@ -30,9 +30,6 @@ const {
  *         paymentTermID:
  *           type: string
  *           description: The ID of the payment term associated with the minestone
- *         views:
- *           type: string
- *           description: Number of views
  *         likes:
  *           type: string
  *           description: Number of likes

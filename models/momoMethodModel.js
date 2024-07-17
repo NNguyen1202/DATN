@@ -1,40 +1,22 @@
-const mongoose = require("mongoose"); // Erase if already required
+const mongoose = require('mongoose'); // Erase if already required
 const moment = require("moment-timezone");
 
 // Declare the Schema of the Mongo model
-var prodSchema = new mongoose.Schema(
-  {
-    contractID: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Contract",
+var momoMethodSchema = new mongoose.Schema({
+    momoPhoneNumber:{
+        type:String,
+        required:true,
     },
-    prodCategoryID: {
-      type: mongoose.Schema.ObjectId,
-      ref: "ProdCategory",
+    momoName:{
+        type:String,
+        required:true,
     },
-    productName: {
-      type: String,
-      required: true,
+    momoMoney:{
+        type:String,
+        required:true,
     },
-    productDescription: {
-      type: String,
-      required: true,
-    },
-    productImgUrl: [],
-    productIngredient: {
-      type: String,
-      required: true,
-    },
-    productUses: {
-      type: String,
-      required: true,
-    },
-    productUsage: {
-      type: String,
-      required: true,
-    },
-  },
-  {
+},
+{
     timestamps: true,
     toJSON: {
       virtuals: true,
@@ -60,8 +42,7 @@ var prodSchema = new mongoose.Schema(
         return ret;
       },
     },
-  }
-);
+  });
 
 //Export the model
-module.exports = mongoose.model("Product", prodSchema);
+module.exports = mongoose.model('MomoMethod', momoMethodSchema);

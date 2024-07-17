@@ -15,10 +15,6 @@ var termSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  paymentMethods: {
-    type: String,
-    required: true,
-  },
   paymentTermID: {
     type: mongoose.Schema.ObjectId,
     ref: "PaymentTerm",

@@ -2,25 +2,25 @@ const express = require("express");
 const router = express.Router();
 const { authMiddleware, isBA } = require("../middlewares/authMiddleware");
 const {
-  createProdDetail,
-  updateProdDetail,
-  deleteProdDetail,
-  getProdDetail,
-  getAllProdDetail,
-} = require("../controller/productDetailCtrl");
+  createCosmeticProdDetail,
+  updateCosmeticProdDetail,
+  deleteCosmeticProdDetail,
+  getCosmeticProdDetail,
+  getAllCosmeticProdDetail,
+} = require("../controller/cosmeticProductDetailCtrl");
 
 /**
  * @swagger
  * tags:
- *   name: ProdDetail
- *   description: Product Detail management
+ *   name: CosmeticProdDetail
+ *   description: Cosmetic Product Detail management
  */
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     ProdDetail:
+ *     CosmeticProdDetail:
  *       type: object
  *       required:
  *         - productID
@@ -49,9 +49,11 @@ const {
  *           description: Skin type suitability of the product
  *         createdAt:
  *           type: string
+ *           format: date-time
  *           description: Date when the product detail was created
  *         updatedAt:
  *           type: string
+ *           format: date-time
  *           description: Date when the product detail was last updated
  *       example:
  *         productID: 60b7253a3f48ab3a6c8e1234
@@ -63,129 +65,129 @@ const {
 
 /**
  * @swagger
- * /api/productDetail/create:
+ * /api/cosmeticProdDetail/create:
  *   post:
- *     summary: Create a new product detail
- *     tags: [ProdDetail]
+ *     summary: Create a new cosmetic product detail
+ *     tags: [CosmeticProdDetail]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/ProdDetail'
+ *             $ref: '#/components/schemas/CosmeticProdDetail'
  *     responses:
  *       201:
- *         description: The product detail was successfully created
+ *         description: The cosmetic product detail was successfully created
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProdDetail'
+ *               $ref: '#/components/schemas/CosmeticProdDetail'
  *       500:
  *         description: Some server error
  */
-router.post("/create", authMiddleware, isBA, createProdDetail);
+router.post("/create", authMiddleware, isBA, createCosmeticProdDetail);
 
 /**
  * @swagger
- * /api/productDetail/{id}:
+ * /api/cosmeticProdDetail/{id}:
  *   put:
- *     summary: Update a product detail
- *     tags: [ProdDetail]
+ *     summary: Update a cosmetic product detail
+ *     tags: [CosmeticProdDetail]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: The product detail id
+ *         description: The cosmetic product detail id
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/ProdDetail'
+ *             $ref: '#/components/schemas/CosmeticProdDetail'
  *     responses:
  *       200:
- *         description: The product detail was successfully updated
+ *         description: The cosmetic product detail was successfully updated
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProdDetail'
+ *               $ref: '#/components/schemas/CosmeticProdDetail'
  *       404:
- *         description: The product detail was not found
+ *         description: The cosmetic product detail was not found
  *       500:
  *         description: Some server error
  */
-router.put("/:id", authMiddleware, isBA, updateProdDetail);
+router.put("/:id", authMiddleware, isBA, updateCosmeticProdDetail);
 
 /**
  * @swagger
- * /api/productDetail/{id}:
+ * /api/cosmeticProdDetail/{id}:
  *   delete:
- *     summary: Remove a product detail
- *     tags: [ProdDetail]
+ *     summary: Remove a cosmetic product detail
+ *     tags: [CosmeticProdDetail]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: The product detail id
+ *         description: The cosmetic product detail id
  *     responses:
  *       200:
- *         description: The product detail was deleted
+ *         description: The cosmetic product detail was deleted
  *       404:
- *         description: The product detail was not found
+ *         description: The cosmetic product detail was not found
  *       500:
  *         description: Some server error
  */
-router.delete("/:id", authMiddleware, isBA, deleteProdDetail);
+router.delete("/:id", authMiddleware, isBA, deleteCosmeticProdDetail);
 
 /**
  * @swagger
- * /api/productDetail/allproductdetail:
+ * /api/cosmeticProdDetail/allcosmeticproductdetail:
  *   get:
- *     summary: Get all product details
- *     tags: [ProdDetail]
+ *     summary: Get all cosmetic product details
+ *     tags: [CosmeticProdDetail]
  *     responses:
  *       200:
- *         description: A list of product details
+ *         description: A list of cosmetic product details
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/ProdDetail'
+ *                 $ref: '#/components/schemas/CosmeticProdDetail'
  *       500:
  *         description: Some server error
  */
-router.get("/allproductdetail", authMiddleware, getAllProdDetail);
+router.get("/allcosmeticproductdetail", authMiddleware, getAllCosmeticProdDetail);
 
 /**
  * @swagger
- * /api/productDetail/{id}:
+ * /api/cosmeticProdDetail/{id}:
  *   get:
- *     summary: Get a product detail by id
- *     tags: [ProdDetail]
+ *     summary: Get a cosmetic product detail by id
+ *     tags: [CosmeticProdDetail]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: The product detail id
+ *         description: The cosmetic product detail id
  *     responses:
  *       200:
- *         description: The product detail description by id
+ *         description: The cosmetic product detail description by id
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProdDetail'
+ *               $ref: '#/components/schemas/CosmeticProdDetail'
  *       404:
- *         description: The product detail was not found
+ *         description: The cosmetic product detail was not found
  *       500:
  *         description: Some server error
  */
-router.get("/:id", authMiddleware, getProdDetail);
+router.get("/:id", authMiddleware, getCosmeticProdDetail);
 
 module.exports = router;

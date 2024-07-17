@@ -32,9 +32,6 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *         prodCategoryID:
  *           type: string
  *           description: The ID of the product category
- *         prodDetailID:
- *           type: string
- *           description: The ID of the product detail
  *         productName:
  *           type: string
  *           required: true

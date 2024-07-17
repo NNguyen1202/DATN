@@ -41,9 +41,6 @@ const {
  *         service:
  *           type: string
  *           description: The service provided in the contract
- *         minViews:
- *           type: number
- *           description: The minimum number of views required
  *         minLikes:
  *           type: number
  *           description: The minimum number of likes required

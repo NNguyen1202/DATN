@@ -33,9 +33,6 @@ const {
  *         payment:
  *           type: string
  *           description: Payment details of the term
- *         paymentMethods:
- *           type: string
- *           description: Payment methods for the term
  *         paymentTermID:
  *           type: string
  *           description: The ID of the payment term associated with the term

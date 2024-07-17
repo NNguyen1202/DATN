@@ -19,6 +19,46 @@ const {
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Brand:
+ *       type: object
+ *       required:
+ *         - brandName
+ *         - brandDescription
+ *       properties:
+ *         assignmentID:
+ *           type: string
+ *           description: The ID of the related assignment
+ *         brandName:
+ *           type: string
+ *           description: The name of the brand
+ *         brandDescription:
+ *           type: string
+ *           description: A description of the brand
+ *         brandImgUrl:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: List of URLs to brand images
+ *         categoryID:
+ *           type: string
+ *           description: The ID of the related category
+ *         contractID:
+ *           type: string
+ *           description: The ID of the related contract
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The creation date
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The last update date
+ */
+
+/**
+ * @swagger
  * /api/brand/createbrand:
  *   post:
  *     summary: Create a new brand
@@ -30,18 +70,7 @@ const {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               assignmentID:
- *                 type: string
- *               brandName:
- *                 type: string
- *               brandDescription:
- *                 type: string
- *               contractID:
- *                 type: string
- *               brandImgUrl:
- *                 type: string
+ *             $ref: '#/components/schemas/Brand'
  *     responses:
  *       201:
  *         description: Brand created successfully
@@ -70,18 +99,7 @@ router.post("/createbrand", authMiddleware, isBA, createBrand);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               assignmentID:
- *                 type: string
- *               brandName:
- *                 type: string
- *               brandDescription:
- *                 type: string
- *               contractID:
- *                 type: string
- *               brandImgUrl:
- *                 type: string
+ *             $ref: '#/components/schemas/Brand'
  *     responses:
  *       200:
  *         description: Brand updated successfully
@@ -129,18 +147,7 @@ router.delete("/:id", authMiddleware, isBA, deleteBrand);
  *             schema:
  *               type: array
  *               items:
- *                 type: object
- *                 properties:
- *                   assignmentID:
- *                     type: string
- *                   brandName:
- *                     type: string
- *                   brandDescription:
- *                     type: string
- *                   contractID:
- *                     type: string
- *                   brandImgUrl:
- *                     type: string
+ *                 $ref: '#/components/schemas/Brand'
  */
 router.get("/allbrand", authMiddleware, getAllBrand);
 
@@ -165,18 +172,7 @@ router.get("/allbrand", authMiddleware, getAllBrand);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 assignmentID:
- *                   type: string
- *                 brandName:
- *                   type: string
- *                 brandDescription:
- *                   type: string
- *                 contractID:
- *                   type: string
- *                 brandImgUrl:
- *                   type: string
+ *               $ref: '#/components/schemas/Brand'
  */
 router.get("/:id", authMiddleware, getBrand);
 

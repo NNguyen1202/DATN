@@ -99,6 +99,10 @@ const sendNotification = async () => {
   }
 };
 
-
+// Lên lịch chạy hàm sendNotification mỗi 30 phút
+cron.schedule('*/30 * * * * *', () => {
+  console.log('Running scheduled task to check for new notifications');
+  sendNotification();
+});
 
 module.exports = sendNotification;

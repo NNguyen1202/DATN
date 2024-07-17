@@ -2,12 +2,16 @@ const mongoose = require('mongoose'); // Erase if already required
 const moment = require("moment-timezone");
 
 // Declare the Schema of the Mongo model
-var prodDetailSchema = new mongoose.Schema({
+var fashionProdDetailSchema = new mongoose.Schema({
     productID:{
         type:mongoose.Schema.ObjectId,
         ref: "Product",
     },
-    characteristic:{
+    meterial:{
+        type:String,
+        required:true,
+    },
+    size:{
         type:String,
         required:true,
     },
@@ -15,14 +19,6 @@ var prodDetailSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    age:{
-        type:String,
-        required:true,
-    },
-    skinType:{
-        type:String,
-        required:true,
-    }
 },
 {
     timestamps: true,
@@ -45,4 +41,4 @@ var prodDetailSchema = new mongoose.Schema({
   });
 
 //Export the model
-module.exports = mongoose.model('ProdDetail', prodDetailSchema);
+module.exports = mongoose.model('FashionProdDetail', fashionProdDetailSchema);

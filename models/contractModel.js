@@ -23,10 +23,6 @@ var contractSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  minViews: {
-    type: Number,
-    required: true,
-  },
   minLikes: {
     type: Number,
     required: true,
@@ -54,7 +50,6 @@ var contractSchema = new mongoose.Schema({
   },
   endDate2: {
     type: Date,
-    required: true,
     get: (v) => moment(v).tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY HH:mm:ss'),
     set: (v) => moment(v, 'DD/MM/YYYY HH:mm:ss').tz('Asia/Ho_Chi_Minh').toDate()
   },

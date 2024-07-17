@@ -1,8 +1,8 @@
-const ProdDetail = require("../models/productDetailModel");
+const ProdDetail = require("../models/fashionProductDetailModel");
 const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require("../utils/validateMongodbId");
 
-const createProdDetail = asyncHandler(async (req, res) => {
+const createFashionProductDetail = asyncHandler(async (req, res) => {
   try {
     const newProdDetail = await ProdDetail.create(req.body);
     res.json(newProdDetail);
@@ -11,7 +11,7 @@ const createProdDetail = asyncHandler(async (req, res) => {
   }
 });
 
-const updateProdDetail = asyncHandler(async (req, res) => {
+const updateFashionProductDetail = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
   try {
@@ -24,7 +24,7 @@ const updateProdDetail = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteProdDetail = asyncHandler(async (req, res) => {
+const deleteFashionProductDetail = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
   try {
@@ -35,7 +35,7 @@ const deleteProdDetail = asyncHandler(async (req, res) => {
   }
 });
 
-const getProdDetail = asyncHandler(async (req, res) => {
+const getFashionProductDetail = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
   try {
@@ -46,7 +46,7 @@ const getProdDetail = asyncHandler(async (req, res) => {
   }
 });
 
-const getAllProdDetail = asyncHandler(async (req, res) => {
+const getAllFashionProductDetail = asyncHandler(async (req, res) => {
   try {
     const getallProdDetail = await ProdDetail.find();
     res.json(getallProdDetail);
@@ -56,9 +56,9 @@ const getAllProdDetail = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  createProdDetail,
-  updateProdDetail,
-  deleteProdDetail,
-  getProdDetail,
-  getAllProdDetail,
+  createFashionProductDetail,
+  updateFashionProductDetail,
+  deleteFashionProductDetail,
+  getFashionProductDetail,
+  getAllFashionProductDetail,
 };
