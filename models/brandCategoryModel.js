@@ -1,16 +1,16 @@
+const mongoose = require("mongoose"); // Erase if already required
 const moment = require("moment-timezone");
-const { default: mongoose } = require("mongoose");
 
 // Declare the Schema of the Mongo model
-var statisticSchema = new mongoose.Schema(
+var brandCategorySchema = new mongoose.Schema(
   {
-    postID: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Post",
+    categoryName: {
+      type: String,
+      required: true,
     },
-    facebookPostID: {
-      type: mongoose.Schema.ObjectId,
-      ref: "FacebookPost",
+    categoryDescription: {
+      type: String,
+      required: true,
     },
   },
   {
@@ -43,4 +43,4 @@ var statisticSchema = new mongoose.Schema(
 );
 
 //Export the model
-module.exports = mongoose.model("Statistic", statisticSchema);
+module.exports = mongoose.model("BrandCategory", brandCategorySchema);

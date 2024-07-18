@@ -1,9 +1,13 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect");
-const cron = require('node-cron');
+const cron = require("node-cron");
 const { swaggerUi, swaggerSpec } = require("./config/swaggerConfig");
-const { refreshToken, updateTokenRefreshCounter, getTokenRefreshCounter  } = require('./services/tokenService');
-const sendNotification = require('./services/notificationService');
+const {
+  refreshToken,
+  updateTokenRefreshCounter,
+  getTokenRefreshCounter,
+} = require("./services/tokenService");
+const sendNotification = require("./services/notificationService");
 
 const app = express();
 
@@ -13,6 +17,7 @@ const authRouter = require("./routes/authRoute");
 const assignmentRouter = require("./routes/assignmentRoute");
 const brandRouter = require("./routes/brandRoute");
 const prodCategoryRouter = require("./routes/categoryRoute");
+//const brandCategoryRouter = require("./routes/brandCategoryRoute");
 const cosmeticProdDetailRouter = require("./routes/cosmeticProductDetailRoute");
 const fashionProdDetailRouter = require("./routes/fashionProductDetailRoute");
 const productRouter = require("./routes/productRoute");
@@ -34,6 +39,8 @@ const statisticRouter = require("./routes/statisticRoute");
 const postInfoRouter = require("./routes/postInfoRoute");
 const responseRouter = require("./routes/responseRoute");
 const facebookWHRouter = require("./routes/facebookWHRoute");
+const facebookPostRouter = require("./routes/facebookPostRoute");
+const facebookPostStatsRouter = require("./routes/facebookPostStatsRoute");
 
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
@@ -58,6 +65,7 @@ app.use("/api/assignment", assignmentRouter);
 app.use("/api/brand", brandRouter);
 app.use("/api/product", productRouter);
 app.use("/api/category", prodCategoryRouter);
+//app.use("/api/brandCategory", brandCategoryRouter);
 app.use("/api/cosmeticProdDetail", cosmeticProdDetailRouter);
 app.use("/api/fashionProdDetail", fashionProdDetailRouter);
 app.use("/api/term", termRouter);
@@ -78,6 +86,8 @@ app.use("/api/statistic", statisticRouter);
 app.use("/api/postInfo", postInfoRouter);
 app.use("/api/response", responseRouter);
 app.use("/webhook", facebookWHRouter);
+app.use("/api/facebookPost", facebookPostRouter);
+app.use("/api/facebookPostStat", facebookPostStatsRouter);
 
 app.use(notFound);
 app.use(errorHandler);

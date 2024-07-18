@@ -29,9 +29,10 @@ const upload = require("../middlewares/uploadPdfMiddleware");
  *         contractID:
  *           type: string
  *           description: The ID of the contract associated with the product
- *         prodCategoryID:
- *           type: string
- *           description: The ID of the product category
+ *         categoryID:
+ *           items:
+ *             type: string
+ *             description: The ID of the related category
  *         productName:
  *           type: string
  *           required: true

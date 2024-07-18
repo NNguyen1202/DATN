@@ -17,10 +17,10 @@ var brandSchema = new mongoose.Schema(
       required: true,
     },
     brandImgUrl: [],
-    categoryID: {
+    categoryID: [{
       type: mongoose.Schema.ObjectId,
       ref: "Category",
-    },
+    }],
     contractID: {
       type: mongoose.Schema.ObjectId,
       ref: "Contract",

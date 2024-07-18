@@ -8,10 +8,10 @@ var prodSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Contract",
     },
-    prodCategoryID: {
+    categoryID: [{
       type: mongoose.Schema.ObjectId,
-      ref: "ProdCategory",
-    },
+      ref: "Category",
+    }],
     productName: {
       type: String,
       required: true,

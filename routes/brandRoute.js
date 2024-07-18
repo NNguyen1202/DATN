@@ -42,8 +42,10 @@ const {
  *             type: string
  *           description: List of URLs to brand images
  *         categoryID:
- *           type: string
- *           description: The ID of the related category
+ *           type: array
+ *           items:
+ *             type: string
+ *             description: The ID of the related category
  *         contractID:
  *           type: string
  *           description: The ID of the related contract
