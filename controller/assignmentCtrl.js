@@ -55,10 +55,59 @@ const getallAssignment = asyncHandler(async (req, res) => {
   }
 });
 
+const getAllBrandAssignment = asyncHandler(async (req, res) => {
+  try {
+    const assignments = await Assignment.find({}).populate({
+      path: 'userID',
+      match: { roleID: "666199afd75d4bd81c4aa3e5" },
+    }).exec();
+
+    const filteredAssignments = assignments.filter(assignment => assignment.userID !== null);
+
+    res.json(filteredAssignments);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+const getAllContentAssignment = asyncHandler(async (req, res) => {
+  try {
+    const assignments = await Assignment.find({}).populate({
+      path: 'userID',
+      match: { roleID: "666199bad75d4bd81c4aa3e8" },
+    }).exec();
+
+    const filteredAssignments = assignments.filter(assignment => assignment.userID !== null);
+
+    res.json(filteredAssignments);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+const getAllMediaAssignment = asyncHandler(async (req, res) => {
+  try {
+    const assignments = await Assignment.find({}).populate({
+      path: 'userID',
+      match: { roleID: "666199c1d75d4bd81c4aa3eb" },
+    }).exec();
+
+    const filteredAssignments = assignments.filter(assignment => assignment.userID !== null);
+
+    res.json(filteredAssignments);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+
 module.exports = {
   createAssignment,
   updateAssignment,
   deleteAssignment,
   getAssignment,
   getallAssignment,
+  getAllBrandAssignment,
+  getAllContentAssignment,
+  getAllMediaAssignment,
 };

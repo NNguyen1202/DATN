@@ -2,7 +2,7 @@ const mongoose = require("mongoose"); // Erase if already required
 const moment = require("moment-timezone");
 
 // Declare the Schema of the Mongo model
-var prodCategorySchema = new mongoose.Schema(
+var categorySchema = new mongoose.Schema(
   {
     categoryName: {
       type: String,
@@ -43,4 +43,4 @@ var prodCategorySchema = new mongoose.Schema(
 );
 
 //Export the model
-module.exports = mongoose.model("ProdCategory", prodCategorySchema);
+module.exports = mongoose.model("Category", categorySchema);

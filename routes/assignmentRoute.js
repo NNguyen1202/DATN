@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const {
-  isBA,
-  isCA,
-  isMA,
   authMiddleware,
 } = require("../middlewares/authMiddleware");
 
@@ -12,7 +9,9 @@ const {
   updateAssignment,
   deleteAssignment,
   getAssignment,
-  getallAssignment,
+  getAllBrandAssignment,
+  getAllContentAssignment,
+  getAllMediaAssignment,
 } = require("../controller/assignmentCtrl");
 
 /**
@@ -24,42 +23,66 @@ const {
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Assignment:
+ *       type: object
+ *       properties:
+ *         userID:
+ *           type: string
+ *           description: The user ID
+ *         userAssignmentID:
+ *           type: string
+ *           description: The user assignment ID
+ *         assignmentName:
+ *           type: string
+ *           description: The name of the assignment
+ *         description:
+ *           type: string
+ *           description: The description of the assignment
+ *         status:
+ *           type: string
+ *           description: The status of the assignment
+ *         attachment:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: List of attachment URLs
+ *         startDate:
+ *           type: string
+ *           format: date
+ *           description: The start date of the assignment
+ *         endDate:
+ *           type: string
+ *           format: date
+ *           description: The end date of the assignment
+ */
+
+/**
+ * @swagger
  * /api/assignment/brand-assistant:
  *   post:
  *     summary: Create a brand assistant assignment
  *     tags: [Assignment]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: The assignment ID
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       200:
- *         description: Assignment updated successfully
+ *         description: Assignment created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-
-router.post("/brand-assistant", authMiddleware, isBA, createAssignment);
+router.post("/brand-assistant", authMiddleware, createAssignment);
 
 /**
  * @swagger
@@ -81,23 +104,18 @@ router.post("/brand-assistant", authMiddleware, isBA, createAssignment);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       200:
  *         description: Assignment updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-router.put("/brand-assistant/:id", authMiddleware, isBA, updateAssignment);
+router.put("/brand-assistant/:id", authMiddleware, updateAssignment);
 
 /**
  * @swagger
@@ -120,7 +138,7 @@ router.put("/brand-assistant/:id", authMiddleware, isBA, updateAssignment);
  *       400:
  *         description: Invalid input
  */
-router.delete("/brand-assistant/:id", authMiddleware, isBA, deleteAssignment);
+router.delete("/brand-assistant/:id", authMiddleware, deleteAssignment);
 
 /**
  * @swagger
@@ -136,18 +154,11 @@ router.delete("/brand-assistant/:id", authMiddleware, isBA, deleteAssignment);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Assignment'
  */
-router.get("/brand-assistant", authMiddleware, isBA, getallAssignment);
+router.get("/brand-assistant", authMiddleware, getAllBrandAssignment);
 
 /**
  * @swagger
@@ -170,18 +181,9 @@ router.get("/brand-assistant", authMiddleware, isBA, getallAssignment);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *               $ref: '#/components/schemas/Assignment'
  */
-router.get("/brand-assistant/:id", authMiddleware, isBA, getAssignment);
+router.get("/brand-assistant/:id", authMiddleware, getAssignment);
 
 /**
  * @swagger
@@ -196,23 +198,18 @@ router.get("/brand-assistant/:id", authMiddleware, isBA, getAssignment);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       201:
  *         description: Assignment created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-router.post("/content-assistant", authMiddleware, isCA, createAssignment);
+router.post("/content-assistant", authMiddleware, createAssignment);
 
 /**
  * @swagger
@@ -234,23 +231,18 @@ router.post("/content-assistant", authMiddleware, isCA, createAssignment);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       200:
  *         description: Assignment updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-router.put("/content-assistant/:id", authMiddleware, isCA, updateAssignment);
+router.put("/content-assistant/:id", authMiddleware, updateAssignment);
 
 /**
  * @swagger
@@ -273,7 +265,7 @@ router.put("/content-assistant/:id", authMiddleware, isCA, updateAssignment);
  *       400:
  *         description: Invalid input
  */
-router.delete("/content-assistant/:id", authMiddleware, isCA, deleteAssignment);
+router.delete("/content-assistant/:id", authMiddleware, deleteAssignment);
 
 /**
  * @swagger
@@ -289,18 +281,11 @@ router.delete("/content-assistant/:id", authMiddleware, isCA, deleteAssignment);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Assignment'
  */
-router.get("/content-assistant", authMiddleware, isCA, getallAssignment);
+router.get("/content-assistant", authMiddleware, getAllContentAssignment);
 
 /**
  * @swagger
@@ -323,18 +308,9 @@ router.get("/content-assistant", authMiddleware, isCA, getallAssignment);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *               $ref: '#/components/schemas/Assignment'
  */
-router.get("/content-assistant/:id", authMiddleware, isCA, getAssignment);
+router.get("/content-assistant/:id", authMiddleware, getAssignment);
 
 /**
  * @swagger
@@ -349,23 +325,18 @@ router.get("/content-assistant/:id", authMiddleware, isCA, getAssignment);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       201:
  *         description: Assignment created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-router.post("/media-assistant", authMiddleware, isMA, createAssignment);
+router.post("/media-assistant", authMiddleware, createAssignment);
 
 /**
  * @swagger
@@ -387,23 +358,18 @@ router.post("/media-assistant", authMiddleware, isMA, createAssignment);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *             $ref: '#/components/schemas/Assignment'
  *     responses:
  *       200:
  *         description: Assignment updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Assignment'
  *       400:
  *         description: Invalid input
  */
-router.put("/media-assistant/:id", authMiddleware, isMA, updateAssignment);
+router.put("/media-assistant/:id", authMiddleware, updateAssignment);
 
 /**
  * @swagger
@@ -426,7 +392,7 @@ router.put("/media-assistant/:id", authMiddleware, isMA, updateAssignment);
  *       400:
  *         description: Invalid input
  */
-router.delete("/media-assistant/:id", authMiddleware, isMA, deleteAssignment);
+router.delete("/media-assistant/:id", authMiddleware, deleteAssignment);
 
 /**
  * @swagger
@@ -442,18 +408,11 @@ router.delete("/media-assistant/:id", authMiddleware, isMA, deleteAssignment);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               userID:
- *                 type: string
- *               startDate:
- *                 type: string
- *                 format: date
- *               endDate:
- *                 type: string
- *                 format: date
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Assignment'
  */
-router.get("/media-assistant", authMiddleware, isMA, getallAssignment);
+router.get("/media-assistant", authMiddleware, getAllMediaAssignment);
 
 /**
  * @swagger
@@ -478,6 +437,6 @@ router.get("/media-assistant", authMiddleware, isMA, getallAssignment);
  *             schema:
  *               $ref: '#/components/schemas/Assignment'
  */
-router.get("/media-assistant/:id", authMiddleware, isMA, getAssignment);
+router.get("/media-assistant/:id", authMiddleware, getAssignment);
 
 module.exports = router;

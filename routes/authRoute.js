@@ -1,5 +1,4 @@
 const express = require("express");
-
 const {
   createUser,
   loginUserCtrl,
@@ -28,6 +27,35 @@ const router = express.Router();
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         fullName:
+ *           type: string
+ *         email:
+ *           type: string
+ *         password:
+ *           type: string
+ *         phoneNumber:
+ *           type: string
+ *         roleID:
+ *           type: string
+ *         isBlocked:
+ *           type: boolean
+ *         refreshToken:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ */
+
+/**
+ * @swagger
  * /api/user/register:
  *   post:
  *     summary: Register a new user
@@ -37,18 +65,7 @@ const router = express.Router();
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *             $ref: '#/components/schemas/User'
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -94,18 +111,9 @@ router.post("/login", loginUserCtrl);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
  */
 router.get("/all-users", getAllUser);
 
@@ -113,26 +121,17 @@ router.get("/all-users", getAllUser);
  * @swagger
  * /api/user/all-brand-users:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve a list of users by brand
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: A list of users
+ *         description: A list of brand users
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
  */
 router.get("/all-brand-users", getAllBrandUser);
 
@@ -140,26 +139,17 @@ router.get("/all-brand-users", getAllBrandUser);
  * @swagger
  * /api/user/all-content-users:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve a list of content users
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: A list of users
+ *         description: A list of content users
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
  */
 router.get("/all-content-users", getAllContentUser);
 
@@ -167,26 +157,17 @@ router.get("/all-content-users", getAllContentUser);
  * @swagger
  * /api/user/all-media-users:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve a list of media users
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: A list of users
+ *         description: A list of media users
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
  */
 router.get("/all-media-users", getAllMediaUser);
 
@@ -233,18 +214,7 @@ router.get("/logout", logout);
  *         content:
  *           application/json:
  *             schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               fullName:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *               $ref: '#/components/schemas/User'
  *       401:
  *         description: Unauthorized
  */
@@ -268,18 +238,7 @@ router.get("/:id", authMiddleware, getUser);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               fullName:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *               phoneNumber:
- *                 type: string
- *               roleID:
- *                 type: string
+ *             $ref: '#/components/schemas/User'
  *     responses:
  *       200:
  *         description: User updated successfully

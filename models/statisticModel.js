@@ -8,21 +8,9 @@ var statisticSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Post",
     },
-    views: {
-      type: Number,
-      required: true,
-    },
-    likes: {
-      type: Number,
-      required: true,
-    },
-    comments: {
-      type: Number,
-      required: true,
-    },
-    shares: {
-      type: Number,
-      required: true,
+    facebookPostID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "FacebookPost",
     },
   },
   {

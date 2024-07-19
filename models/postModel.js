@@ -12,10 +12,12 @@ var postSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Brand",
     },
-    productID: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Product",
-    },
+    productID: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Product",
+      },
+    ],
     assignmentID: {
       type: mongoose.Schema.ObjectId,
       ref: "Assignment",
@@ -37,6 +39,10 @@ var postSchema = new mongoose.Schema(
       required: true,
     },
     mediaChannel: {
+      type: String,
+      required: true,
+    },
+    facebookPostUrl: {
       type: String,
       required: true,
     },

@@ -8,6 +8,23 @@ var asmSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
+    userAssignmentID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    assignmentName:{
+      type: String,
+      required: true,
+    },
+    description:{
+      type: String,
+      required: true,
+    },
+    status:{
+      type: String,
+      required: true,
+    },
+    attachment: [],
     startDate: {
       type: Date,
       required: true,

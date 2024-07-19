@@ -19,6 +19,70 @@ const {
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Post:
+ *       type: object
+ *       required:
+ *         - title
+ *         - description
+ *         - content
+ *         - postUploadUrl
+ *         - mediaChannel
+ *         - postDate
+ *         - status
+ *       properties:
+ *         videoID:
+ *           type: string
+ *           description: The ID of the related video
+ *         brandID:
+ *           type: string
+ *           description: The ID of the related brand
+ *         productID:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: List of IDs of related products
+ *         assignmentID:
+ *           type: string
+ *           description: The ID of the related assignment
+ *         title:
+ *           type: string
+ *           description: The title of the post
+ *         description:
+ *           type: string
+ *           description: The description of the post
+ *         content:
+ *           type: string
+ *           description: The content of the post
+ *         postUploadUrl:
+ *           type: string
+ *           description: The URL where the post is uploaded
+ *         facebookPostUrl:
+ *           type: string
+ *           description: The URL where the post is uploaded
+ *         mediaChannel:
+ *           type: string
+ *           description: The media channel of the post
+ *         postDate:
+ *           type: string
+ *           format: date
+ *           description: The date of the post
+ *         status:
+ *           type: string
+ *           description: The status of the post
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The creation date of the post
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The last update date of the post
+ */
+
+/**
+ * @swagger
  * /api/post/createpost:
  *   post:
  *     summary: Create a new post
@@ -30,31 +94,7 @@ const {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               videoID:
- *                 type: string
- *               brandID:
- *                 type: string
- *               productID:
- *                 type: string
- *               assignmentID:
- *                 type: string
- *               title:
- *                 type: string
- *               description:
- *                 type: string
- *               content:
- *                 type: string
- *               postUploadUrl:
- *                 type: string
- *               mediaChannel:
- *                 type: string
- *               postDate:
- *                 type: string
- *                 format: date
- *               status:
- *                 type: string
+ *             $ref: '#/components/schemas/Post'
  *     responses:
  *       201:
  *         description: Post created successfully
@@ -83,31 +123,7 @@ router.post("/createpost", authMiddleware, isMA, createPost);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               videoID:
- *                 type: string
- *               brandID:
- *                 type: string
- *               productID:
- *                 type: string
- *               assignmentID:
- *                 type: string
- *               title:
- *                 type: string
- *               description:
- *                 type: string
- *               content:
- *                 type: string
- *               postUploadUrl:
- *                 type: string
- *               mediaChannel:
- *                 type: string
- *               postDate:
- *                 type: string
- *                 format: date
- *               status:
- *                 type: string
+ *             $ref: '#/components/schemas/Post'
  *     responses:
  *       200:
  *         description: Post updated successfully
@@ -155,37 +171,7 @@ router.delete("/:id", authMiddleware, isMA, deletePost);
  *             schema:
  *               type: array
  *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                   videoID:
- *                     type: string
- *                   brandID:
- *                     type: string
- *                   productID:
- *                     type: string
- *                   assignmentID:
- *                     type: string
- *                   title:
- *                     type: string
- *                   description:
- *                     type: string
- *                   content:
- *                     type: string
- *                   postUploadUrl:
- *                     type: string
- *                   mediaChannel:
- *                     type: string
- *                   postDate:
- *                     type: string
- *                     format: date
- *                   status:
- *                     type: string
- *                   createdAt:
- *                     type: string
- *                   updatedAt:
- *                     type: string
+ *                 $ref: '#/components/schemas/Post'
  */
 router.get("/all-post", authMiddleware, getAllPost);
 
@@ -210,37 +196,7 @@ router.get("/all-post", authMiddleware, getAllPost);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                 videoID:
- *                   type: string
- *                 brandID:
- *                   type: string
- *                 productID:
- *                   type: string
- *                 assignmentID:
- *                   type: string
- *                 title:
- *                   type: string
- *                 description:
- *                   type: string
- *                 content:
- *                   type: string
- *                 postUploadUrl:
- *                   type: string
- *                 mediaChannel:
- *                   type: string
- *                 postDate:
- *                   type: string
- *                   format: date
- *                 status:
- *                   type: string
- *                 createdAt:
- *                   type: string
- *                 updatedAt:
- *                   type: string
+ *               $ref: '#/components/schemas/Post'
  */
 router.get("/:id", authMiddleware, getPost);
 
